@@ -30,7 +30,6 @@
   width: 30%;
   border: 2px solid var(--gradient-middle);
   border-radius: 8px;
-
 }
 
 .drink-select select {
@@ -38,7 +37,7 @@
   border: none;
   background: none;
   color: #586069;
-
+  outline: none;
 }
 
 .drinks-selects button {
