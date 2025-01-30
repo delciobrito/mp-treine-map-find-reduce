@@ -3,7 +3,7 @@ import { drinks } from "../data.js";
 const fruits = document.querySelector("#fruta");
 const distilleds = document.querySelector("#destilado");
 const buttonDrinksCreator = document.querySelector("#criarDrink");
-const drink = document.querySelector("#resultado");
+const drinkResult = document.querySelector("#resultado");
 
 buttonDrinksCreator.addEventListener("click", () => {
   let fruit = fruits.value;
@@ -13,15 +13,28 @@ buttonDrinksCreator.addEventListener("click", () => {
 });
 
 function drinksCreator(fruit, distilled) {
-  if (fruit != "" && distilled != "") {
-    drink.innerHTML = `
-                        <h1>Bebida pronta<h1/>
+
+  if (fruit !== "" && distilled !== "") {
+    const found = drinks.find(
+      (drink) => drink.fruta === fruit && drink.destilado === distilled
+    );
+
+    drinkResult.innerHTML = "";
+    drinkResult.innerHTML = `
+      <h2> Nome: ${found.nome}<h2/>
+      <p>Descrição: ${found.descricao} <p/>
+    `;
+  } else if (fruit !== "" && distilled === "") {
+    drinkResult.innerHTML = `
+                        <h1>Por favor escolha um destilado!<h1/>
                     `;
-  } else {
-    drink.innerHTML = `
-                        <h1>Falta um ingrediente<h1/>
+  } else if (fruit === "" && distilled !== "") {
+    drinkResult.innerHTML = `
+                        <h1>Por favor escolha uma fruta!<h1/>
+                    `;
+  } else if (fruit === "" && distilled === ""){
+    drinkResult.innerHTML = `
+                        <h1>Por favor escolha os ingredientes!<h1/>
                     `;
   }
 }
-
-console.log(drinks);
