@@ -53,6 +53,7 @@ h1 {
 }
 
 #total-calories {
+  display: inline-block;
   font-weight: bold;
   color: #4caf50;
 }
